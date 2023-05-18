@@ -5,7 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 public interface IPacket {
 
     /**
-     * 转为byte[] 用于发送 记得释放
+     * 转为byte[] 用于发送
      */
     byte[] array();
 
