@@ -1,0 +1,11 @@
+name: ConduitCore
+version: '${project.version}'
+main: me.lonewolf.conduitcoreplugin.ConduitCore
+api-version: 1.17
+commands:
+  conduitcore:
+    description: "主要指令"
+permissions:
+  conduitcore.command.use:
+    description: "指令使用权限"
+    default: op
