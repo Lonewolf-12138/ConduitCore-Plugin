@@ -41,14 +41,14 @@ public class BuffPacket implements IPacket {
             Object buffObject = buffsJsonObject.get(buff.name);
             if(buffObject == null) {
                 buffObject = new JSONObject();
-                buffsJsonObject.put("name", buffObject);
+                buffsJsonObject.put(buff.name, buffObject);
             }
             JSONObject buffJsonObject = (JSONObject) buffObject;
             JSONObject thisBuff = new JSONObject();
+            buffJsonObject.put(buff.attribute, thisBuff);
             thisBuff.put("type", buff.type.getType());
             thisBuff.put("value", buff.value);
             thisBuff.put("duration", buff.duration);
-            buffJsonObject.put(buff.type, thisBuff);
         }
         jsonObject.put("buffs", buffsJsonObject);
         byte[] jsonBytes = jsonObject.toJSONString().getBytes(CharsetUtil.UTF_8);
