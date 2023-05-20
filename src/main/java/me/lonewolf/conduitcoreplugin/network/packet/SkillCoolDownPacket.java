@@ -38,8 +38,9 @@ public class SkillCoolDownPacket implements IPacket {
         int size = skillCoolDowns.size();
         byteBuf.writeInt(size);
         for (SkillCoolDown skillCoolDown : skillCoolDowns) {
-            byteBuf.writeInt(skillCoolDown.name.length());
-            byteBuf.writeCharSequence(skillCoolDown.name, StandardCharsets.UTF_8);
+            byte[] skill = skillCoolDown.name.getBytes(StandardCharsets.UTF_8);
+            byteBuf.writeInt(skill.length);
+            byteBuf.writeBytes(skill);
             byteBuf.writeLong(skillCoolDown.coolDownTime);
         }
         byte[] data = new byte[byteBuf.readableBytes()];
