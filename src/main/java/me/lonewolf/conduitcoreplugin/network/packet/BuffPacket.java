@@ -6,6 +6,7 @@ import io.netty.util.CharsetUtil;
 import lombok.Getter;
 import me.lonewolf.conduitcoreplugin.network.IPacket;
 import net.minecraft.network.FriendlyByteBuf;
+import org.bukkit.World;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -85,7 +86,7 @@ public class BuffPacket implements IPacket {
          */
         public int value;
         /**
-         * 持续时间 秒
+         * 持续时间 tick
          */
         public long duration;
 
@@ -106,7 +107,7 @@ public class BuffPacket implements IPacket {
         /**
          * 百分比相乘属性
          */
-        PERCENTAGE_ADDITION("PERCENTAGE_ADDITION ");
+        PERCENTAGE_ADDITION("PERCENTAGE_ADDITION");
 
         @Getter
         private final String type;

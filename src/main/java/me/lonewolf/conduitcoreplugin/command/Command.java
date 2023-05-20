@@ -28,26 +28,10 @@ public class Command  implements TabExecutor {
         if (strings != null && strings.length != 0) {
             Player player = Bukkit.getPlayer(strings[0]);
             List<BuffPacket.Buff> buffs = new ArrayList<>();
-            buffs.add(new BuffPacket.Buff("利刃", "攻击力", BuffPacket.BuffType.DIRECT_ADDITION, 7, 20));
-            buffs.add(new BuffPacket.Buff("利刃", "暴击率", BuffPacket.BuffType.PERCENTAGE_ADDITION, 15, 10));
-            buffs.add(new BuffPacket.Buff("迅捷", "移动速度", BuffPacket.BuffType.PERCENTAGE_ADDITION, 30, 25));
-            buffs.add(new BuffPacket.Buff("失重", "移动速度", BuffPacket.BuffType.PERCENTAGE_ADDITION, -15, 15));
+            buffs.add(new BuffPacket.Buff("BUFF-666", "MAX_HEALTH", BuffPacket.BuffType.DIRECT_ADDITION, 50, 400));
             BuffPacket buffPacket = new BuffPacket(buffs, true);
             ConduitCore.getInstance().getPacketThreadExecutor().sendPacket(player, buffPacket);
         }
-        //        ConduitCore instance = ConduitCore.getInstance();
-//        instance.getPacketThreadExecutor().sendPacket((Player) commandSender, new Runnable() {
-//            @Override
-//            public void run() {
-//                ByteBuf byteBuf = Unpooled.buffer();
-//                byteBuf.writeByte(10);
-//                byteBuf.writeByte(9);
-//                byte[] data = new byte[byteBuf.readableBytes()];
-//                byteBuf.readBytes(data);
-//                instance.getNetworkManager().sendPacket((Player) commandSender, data);
-//                byteBuf.release();
-//            }
-//        });
         return false;
     }
 

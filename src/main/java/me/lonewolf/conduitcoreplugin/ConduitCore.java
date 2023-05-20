@@ -26,8 +26,8 @@ public final class ConduitCore extends JavaPlugin {
         this.networkManager = new NetworkManager(instance);
         this.packetThreadExecutor = new PacketThreadExecutor(this.networkManager);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(instance, this.packetThreadExecutor), this);
-        getCommand("conduitcore").setExecutor(new Command());
-        getCommand("conduitcore").setTabCompleter(new Command());
+//        getCommand("conduitcore").setExecutor(new Command());
+//        getCommand("conduitcore").setTabCompleter(new Command());
 
     }
 
