@@ -43,6 +43,8 @@ public class SkillCoolDownPacket implements IPacket {
             byteBuf.writeBytes(skill);
             byteBuf.writeLong(skillCoolDown.coolDownTime);
         }
+        // 重置读指针
+        byteBuf.resetReaderIndex();
         byte[] data = new byte[byteBuf.readableBytes()];
         byteBuf.readBytes(data);
         byteBuf.release();

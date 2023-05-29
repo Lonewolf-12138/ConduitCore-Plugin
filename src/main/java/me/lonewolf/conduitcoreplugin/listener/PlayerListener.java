@@ -1,6 +1,7 @@
 package me.lonewolf.conduitcoreplugin.listener;
 
 import me.lonewolf.conduitcoreplugin.ConduitCore;
+import me.lonewolf.conduitcoreplugin.network.NetworkManager;
 import me.lonewolf.conduitcoreplugin.network.PacketThreadExecutor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -33,8 +34,13 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerRegisterChannel(PlayerRegisterChannelEvent e){
         String channel = e.getChannel();
-        if (channel.equals(this.conduitCore.getNetworkManager().getChannelId())) {
-            this.packetThreadExecutor.onRegisterChannel(e.getPlayer());
+        NetworkManager networkManager = this.conduitCore.getNetworkManager();
+        if (channel.startsWith(networkManager.getChannelId())){
+            if (channel.equals(networkManager.getChannel())) {
+                this.packetThreadExecutor.onRegisterChannel(e.getPlayer());
+            } else {
+                e.getPlayer().sendTitle("§c您的ConduitCore模组已失效!", "§c请尽快更新!", 20, 100, 40);
+            }
         }
     }
 
